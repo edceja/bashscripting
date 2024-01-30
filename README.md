@@ -15,7 +15,7 @@ The user should also have the ability execute the script in the bash shell. You 
 # Directions 
 Run the script in the same directory as the files you wish to upload. You can enter the file(s) that you would like upload as follows: 
 
-./gcpscript [file1] [file2] ... 
+`./gcpscript [file1] [file2] ...`
 
 The script will first authenticate your GCP account and you will follow each prompt to select your desired GCP configuration. Once authenticated, the available storage buckets in the current project will be listed and you will be given a choice to upload to an existing bucket or create a new storage bucket. The script will check that the files you provided exist and will then display a message if the upload was successful. 
 
