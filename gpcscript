@@ -26,7 +26,7 @@ fi
 #Upload files to cloud storage bucket
 cloud_uploader(){
 
-#Check if your files exists then upload to the selected storage bucket 
+#Check if your files exists in your current directory then upload to the selected storage bucket 
 for i in "$@"
 do
     if [ -f ./$i ]; then    
