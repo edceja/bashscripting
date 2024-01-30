@@ -1,22 +1,54 @@
 #! /bin/bash 
 
-#This script will upload files to GCP cloud storage bucket 
+#This script will upload files to a GCP cloud storage bucket 
 
-#initialize GCP CLI
+#Initialize GCP CLI 
 setup(){
     gcloud init 
 }
 
-#upload files to cloud storage bucket
+
+#List the availabe buckets in current project 
+list_available_buckets(){ 
+gcloud storage ls 
+}
+
+#Prompt the user to provide the desired storage bucket or create a new storage bucket
+select_bucket(){ 
+
+read -p "Please provide the name of your storage bucket from the list of available buckets above or type CREATE to create your own bucket: " bucket_name 
+if [ $bucket_name == "CREATE" ]; then 
+    read -p "Please provide a name for your NEW storage bucket: " bucket_name
+    gcloud storage buckets create gs://$bucket_name
+fi 
+}
+
+#Upload files to cloud storage bucket
 cloud_uploader(){
 
-for i in "$@" 
+#Check if your files exists then upload to the selected storage bucket 
+for i in "$@"
 do
-gsutil cp $i gs://bash_project
+    if [ -f ./$i ]; then    
+        echo "Uploading $i to $bucket_name storage bucket."
+        
+        #Upload each existing file to storage bucket, display 
+        #messge if the file does not exists
+        gsutil cp $i gs://$bucket_name
+        echo "$i uploaded successfully!" 
+    else 
+        echo "$i does not exists, please provide a valid file."
+        break
+    fi
 done 
+
 
 }
 
 #setup
+list_available_buckets
+select_bucket
 cloud_uploader $@
+
+
 
