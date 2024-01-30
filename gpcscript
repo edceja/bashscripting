@@ -1,1 +1,22 @@
 #! /bin/bash 
+
+#This script will upload files to GCP cloud storage bucket 
+
+#initialize GCP CLI
+setup(){
+    gcloud init 
+}
+
+#upload files to cloud storage bucket
+cloud_uploader(){
+
+for i in "$@" 
+do
+gsutil cp $i gs://bash_project
+done 
+
+}
+
+#setup
+cloud_uploader $@
+
