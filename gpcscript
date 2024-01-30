@@ -45,7 +45,7 @@ done
 
 }
 
-#setup
+setup
 list_available_buckets
 select_bucket
 cloud_uploader $@
