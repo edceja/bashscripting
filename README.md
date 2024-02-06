@@ -4,7 +4,7 @@
 # Overview 
 This short script will allow you to upload a file(s) in your current directory to a GCP storage bucket. This script assumes you have the **GCP SDK installed** on your local device and that you have sufficient privilages to **create a storage bucket and upload files** to that bucket (Cloud Storage Editor Role). 
 
-The user should also have the ability execute the script in the bash shell. You may need to edit user permissions on the script by running the chmod command. 
+The user should also have the ability execute the script in the bash shell. You may need to edit user permissions on the script by running the `chmod` command. 
 
 # Requirements 
 1. Cloud SDK installed on your device
